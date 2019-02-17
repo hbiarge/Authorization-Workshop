@@ -1,7 +1,6 @@
 using Acheve.AspNetCore.TestHost.Security;
 using Acheve.TestHost;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Products.Api.IntegrationTests
@@ -15,10 +14,10 @@ namespace Products.Api.IntegrationTests
             // Register Authentication
             services.AddAuthentication(options =>
                 {
-                    options.DefaultScheme = TestServerAuthenticationDefaults.AuthenticationScheme;
+                    options.DefaultScheme = TestServerDefaults.AuthenticationScheme;
                 })
-                .AddTestServerAuthentication();
-                
+                .AddTestServer();
+
             ApiConfiguration.ConfigureServices(services);
         }
 

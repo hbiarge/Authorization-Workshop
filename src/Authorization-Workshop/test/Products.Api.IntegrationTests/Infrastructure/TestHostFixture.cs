@@ -9,6 +9,10 @@ namespace Products.Api.IntegrationTests.Infrastructure
         public TestHostFixture()
         {
             var host = new WebHostBuilder()
+                .UseDefaultServiceProvider(x =>
+                {
+                    x.ValidateScopes = true;
+                })
                 .UseStartup<TestStartup>();
 
             Server = new TestServer(host);

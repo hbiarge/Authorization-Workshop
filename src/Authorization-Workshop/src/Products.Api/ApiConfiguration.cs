@@ -14,7 +14,7 @@ namespace Products.Api
         public static void ConfigureServices(IServiceCollection services)
         {
             services.AddMvcCore()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_1)
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddAuthorization(Policies.Configure)
                 .AddJsonFormatters(options =>
                 {
