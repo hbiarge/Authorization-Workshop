@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Products.Api.Authorization.Requirements;
@@ -31,7 +32,7 @@ namespace Products.Api.Authorization
                 policyBuilder.RequireClaim("Department", "CPM", "Platform");
                 policyBuilder.RequireAssertion(context =>
                 {
-                    var roles = context.User.FindAll("roles");
+                    var roles = context.User.FindAll(ClaimTypes.Role);
 
                     return roles.Any()
                         ? Task.FromResult(true)

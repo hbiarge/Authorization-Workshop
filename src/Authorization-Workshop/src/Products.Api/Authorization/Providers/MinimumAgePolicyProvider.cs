@@ -17,6 +17,7 @@ namespace Products.Api.Authorization.Providers
         public MinimumAgePolicyProvider(IOptions<AuthorizationOptions> options)
         {
             _options = options;
+
             // ASP.NET Core only uses one authorization policy provider, so if the custom implementation
             // doesn't handle all policies (including default policies, etc.) it should fall back to an
             // alternate provider.
