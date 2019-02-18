@@ -16,7 +16,14 @@ namespace Products.Api.IntegrationTests
                 {
                     options.DefaultScheme = TestServerDefaults.AuthenticationScheme;
                 })
-                .AddTestServer();
+                .AddTestServer()
+                // We can register as many TestServer authentication options with different scheme names
+                .AddTestServer("bearer", options =>
+                {
+                    options.NameClaimType = "name";
+                    options.RoleClaimType = "role";
+                })
+                .AddTestServer("extra");
 
             ApiConfiguration.ConfigureServices(services);
         }

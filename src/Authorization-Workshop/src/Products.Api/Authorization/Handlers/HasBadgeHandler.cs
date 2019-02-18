@@ -6,7 +6,7 @@ namespace Products.Api.Authorization.Handlers
 {
     public class HasBadgeHandler : AuthorizationHandler<OfficeEntryRequirement>
     {
-        private const string ExpectedIssuer = "LOCAL AUTHORITY";
+        private const string ExpectedIssuer = "MySuperSecureIssuer";
 
         protected override Task HandleRequirementAsync(AuthorizationHandlerContext context, OfficeEntryRequirement requirement)
         {

@@ -5,7 +5,7 @@ using Products.Api.Authorization;
 namespace Products.Api.Controllers
 {
     [Route("api/schemas")]
-    public class SchemasController : ControllerBase
+    public class S05SchemasController : ControllerBase
     {
         [Authorize(Policies.MultipleSchemas)]
         [HttpGet]

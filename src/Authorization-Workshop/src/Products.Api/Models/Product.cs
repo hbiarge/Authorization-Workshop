@@ -1,7 +1,4 @@
-﻿using System;
-using System.Text;
-
-namespace Products.Api.Models
+﻿namespace Products.Api.Models
 {
     public class Product
     {

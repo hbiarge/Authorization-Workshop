@@ -8,12 +8,12 @@ namespace Products.Api.Controllers
 {
     [Authorize]
     [Route("api/demos/products")]
-    public class ResourceBasedController : ControllerBase
+    public class S03ResourceBasedController : ControllerBase
     {
         private readonly IProductsRepository _productsRepository;
         private readonly IAuthorizationService _authorizationService;
 
-        public ResourceBasedController(IProductsRepository productsRepository, IAuthorizationService authorizationService)
+        public S03ResourceBasedController(IProductsRepository productsRepository, IAuthorizationService authorizationService)
         {
             _productsRepository = productsRepository;
             _authorizationService = authorizationService;

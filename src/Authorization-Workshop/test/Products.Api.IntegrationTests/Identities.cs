@@ -16,14 +16,14 @@ namespace Products.Api.IntegrationTests
             new Claim(ClaimTypes.Role, "Developer"),
             new Claim(ClaimTypes.Role, "Buddy"),
             new Claim("Department", "CPM"),
-            new Claim("BadgeNumber", "HB04356"),
+            new Claim("BadgeNumber", "HB04356", ClaimValueTypes.String, "MySuperSecureIssuer"),
         };
 
         public static readonly IEnumerable<Claim> RubenGarcia = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, "RG95478"),
             new Claim(ClaimTypes.Name, "Ruben Garcia"),
-            new Claim("TemporaryBadgeExpiry", DateTime.UtcNow.AddDays(1).ToString("O"), ClaimValueTypes.Date),
+            new Claim("TemporaryBadgeExpiry", DateTime.UtcNow.AddDays(1).ToString("O"), ClaimValueTypes.Date, "MySuperSecureIssuer"),
         };
 
         public static readonly IEnumerable<Claim> BearerUserClaims = new[]
@@ -35,7 +35,7 @@ namespace Products.Api.IntegrationTests
 
         public static readonly IEnumerable<Claim> ExtraUserClaims = new[]
         {
-            new Claim("Supervisor", "The big boss"),
+            new Claim("Supervisor", "The big boss")
         };
     }
 }

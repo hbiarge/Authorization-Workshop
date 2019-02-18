@@ -10,11 +10,11 @@ using Xunit;
 namespace Products.Api.IntegrationTests.Specs
 {
     [Collection(Collections.Api)]
-    public class IntroControllerTests
+    public class S01IntroControllerTests
     {
         private readonly TestHostFixture _fixture;
 
-        public IntroControllerTests(TestHostFixture fixture)
+        public S01IntroControllerTests(TestHostFixture fixture)
         {
             _fixture = fixture;
         }
@@ -22,7 +22,8 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task Values_Is_Authorized_For_Valid_User()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<IntroController>(controller => controller.Values());
+            var builder = _fixture.Server.CreateHttpApiRequest<S01IntroController>(
+                controller => controller.Values());
             
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)
@@ -32,9 +33,10 @@ namespace Products.Api.IntegrationTests.Specs
         }
 
         [Fact]
-        public async Task Values_Is_Not_Authorized_For_Without_User_Information()
+        public async Task Values_Is_Not_Authorized_Without_User_Information()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<IntroController>(controller => controller.Values());
+            var builder = _fixture.Server.CreateHttpApiRequest<S01IntroController>(
+                controller => controller.Values());
 
             var response = await builder
                 .GetAsync();
@@ -45,7 +47,8 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task PublicValues_Is_Authorized_Without_User_Information()
         {
-            var builder =_fixture.Server.CreateHttpApiRequest<IntroController>(controller => controller.PublicValues());
+            var builder =_fixture.Server.CreateHttpApiRequest<S01IntroController>(
+                controller => controller.PublicValues());
 
             var response = await builder
                 .GetAsync();

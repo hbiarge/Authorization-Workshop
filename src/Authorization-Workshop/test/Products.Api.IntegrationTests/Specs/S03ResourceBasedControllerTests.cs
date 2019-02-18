@@ -10,11 +10,11 @@ using Xunit;
 namespace Products.Api.IntegrationTests.Specs
 {
     [Collection(Collections.Api)]
-    public class ResourceBasedControllerTests
+    public class S03ResourceBasedControllerTests
     {
         private readonly TestHostFixture _fixture;
 
-        public ResourceBasedControllerTests(TestHostFixture fixture)
+        public S03ResourceBasedControllerTests(TestHostFixture fixture)
         {
             _fixture = fixture;
         }
@@ -22,7 +22,8 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task User_Gets_NotFound_For_Non_Existing_Product()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<ResourceBasedController>(controller => controller.GetProduct("9999"));
+            var builder = _fixture.Server.CreateHttpApiRequest<S03ResourceBasedController>(
+                controller => controller.GetProduct("9999"));
 
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)
@@ -34,7 +35,8 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task User_Can_Get_Owned_Products()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<ResourceBasedController>(controller => controller.GetProduct("1234"));
+            var builder = _fixture.Server.CreateHttpApiRequest<S03ResourceBasedController>(
+                controller => controller.GetProduct("1234"));
 
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)
@@ -46,7 +48,8 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task User_Can_Not_Get_Not_Owned_Products()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<ResourceBasedController>(controller => controller.GetProduct("4321"));
+            var builder = _fixture.Server.CreateHttpApiRequest<S03ResourceBasedController>(
+                controller => controller.GetProduct("4321"));
 
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)

@@ -5,7 +5,7 @@ using Products.Api.Authorization;
 namespace Products.Api.Controllers
 {
     [Route("api/code-based")]
-    public class CodeBasedController : ControllerBase
+    public class S02CodeBasedController : ControllerBase
     {
         [Authorize(Policies.Over21Years)]
         [HttpGet("over-21")]
