@@ -12,7 +12,7 @@ namespace Products.Api.IntegrationTests
             new Claim(ClaimTypes.Name, "Hugo Biarge"),
             new Claim(ClaimTypes.Country, "Spain"),
             new Claim(ClaimTypes.DateOfBirth, "1971-12-20", ClaimValueTypes.Date),
-            new Claim(ClaimTypes.Email, "hugo.biarge@adidas.com", ClaimValueTypes.Email),
+            new Claim(ClaimTypes.Email, "hbiarge@gmail.com", ClaimValueTypes.Email),
             new Claim(ClaimTypes.Role, "Developer"),
             new Claim(ClaimTypes.Role, "Buddy"),
             new Claim("Department", "CPM"),
