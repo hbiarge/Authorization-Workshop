@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Products.Api.Authorization;
 
 namespace Products.Api.Controllers
 {
-    [Authorize]
+    [Authorize(Policies.Simple)]
     [Route("api/intro")]
     public class S01IntroController : ControllerBase
     {

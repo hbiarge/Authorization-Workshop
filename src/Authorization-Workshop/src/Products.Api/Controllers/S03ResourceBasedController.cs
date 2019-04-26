@@ -13,7 +13,9 @@ namespace Products.Api.Controllers
         private readonly IProductsRepository _productsRepository;
         private readonly IAuthorizationService _authorizationService;
 
-        public S03ResourceBasedController(IProductsRepository productsRepository, IAuthorizationService authorizationService)
+        public S03ResourceBasedController(
+            IProductsRepository productsRepository, 
+            IAuthorizationService authorizationService)
         {
             _productsRepository = productsRepository;
             _authorizationService = authorizationService;
