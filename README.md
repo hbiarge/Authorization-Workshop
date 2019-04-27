@@ -1,5 +1,7 @@
 # Authorization-Workshop
 
-Ejemplos de autorizaci髇 en Asp.Net Core basados en el excelente workshop del equipo de Asp.Net Core (https://github.com/blowdart/AspNetAuthorizationWorkshop)
+Ejemplos de autorizaci贸n en Asp.Net Core basados en el excelente workshop del equipo de Asp.Net Core (https://github.com/blowdart/AspNetAuthorizationWorkshop)
 
-A馻de los test de integraci髇 para validar y revisar de una forma sencilla y r醦ida los diferentes escenarios que nos proporciona el subsistema de autorizaci髇 de Asp.Net Core
+A帽ade los test de integraci贸n para validar y revisar de una forma sencilla y r谩pida los diferentes escenarios que nos proporciona el subsistema de autorizaci贸n de Asp.Net Core
+
+Puedes ver una charla grabada sobre **Autorizaci贸n en .Net Core** que usa este repo como base (https://www.youtube.com/watch?v=_b0R3L6KeMc)
