@@ -1,13 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2026
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29306.81
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{E5F59A00-62C7-4A62-845B-8F74776FA277}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\global.json = ..\..\global.json
-	EndProjectSection
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D3A1C1B4-0D86-4F8B-88E7-A87E8DD5CD9D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Api", "src\Products.Api\Products.Api.csproj", "{8D6E9A25-ED3F-4C8B-B9FD-4A4B5F3650D4}"
