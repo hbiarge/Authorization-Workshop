@@ -20,10 +20,10 @@ namespace Products.Api.IntegrationTests.Specs
         }
 
         [Fact]
-        public async Task Should_Be_Forbidden_For_Minimum_50()
+        public async Task Should_Be_Forbidden_For_Write()
         {
             var builder = _fixture.Server.CreateHttpApiRequest<S04CustomPolicyProviderController>(
-                controller => controller.Minimum50());
+                controller => controller.Write());
 
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)
@@ -33,10 +33,10 @@ namespace Products.Api.IntegrationTests.Specs
         }
 
         [Fact]
-        public async Task Should_Be_Success_For_Minimum_40()
+        public async Task Should_Be_Success_For_Read()
         {
             var builder = _fixture.Server.CreateHttpApiRequest<S04CustomPolicyProviderController>(
-                controller => controller.Minimum40());
+                controller => controller.Read());
 
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)

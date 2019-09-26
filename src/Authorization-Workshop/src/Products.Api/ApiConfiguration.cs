@@ -32,10 +32,11 @@ namespace Products.Api
             // Replace the default authorization policy provider with our own
             // custom provider which can return authorization policies for given
             // policy names (instead of using the default policy provider)
-            services.AddSingleton<IAuthorizationPolicyProvider, MinimumAgePolicyProvider>();
+            services.AddSingleton<IAuthorizationPolicyProvider, PermissionsPolicyProvider>();
 
             // Authorization handlers
-            services.AddSingleton<IAuthorizationHandler, MinimumAgeHandler>();
+            services.AddSingleton<IAuthorizationHandler, MinimumAgeAuthorizationHandler>();
+            services.AddSingleton<IAuthorizationHandler, PermissionsAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, HasBadgeHandler>();
             services.AddSingleton<IAuthorizationHandler, HasTemporaryPassHandler>();
             services.AddSingleton<IAuthorizationHandler, OwnedProductHandler>();

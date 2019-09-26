@@ -6,16 +6,16 @@ namespace Products.Api.Controllers
     [Route("api/custom-provider")]
     public class S04CustomPolicyProviderController : ControllerBase
     {
-        [MinimumAgeAuthorize(age:50)]
-        [HttpGet("50")]
-        public IActionResult Minimum50()
+        [HasPermission(Permission.Read)]
+        [HttpGet("Read")]
+        public IActionResult Read()
         {
             return Ok(new[] { "Value1", "Value2" });
         }
 
-        [MinimumAgeAuthorize(age: 40)]
-        [HttpGet("40")]
-        public IActionResult Minimum40()
+        [HasPermission(Permission.Write)]
+        [HttpGet("Write")]
+        public IActionResult Write()
         {
             return Ok(new[] { "Value1", "Value2" });
         }

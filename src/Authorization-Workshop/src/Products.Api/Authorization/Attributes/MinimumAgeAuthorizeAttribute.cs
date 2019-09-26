@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Products.Api.Authorization.Providers;
 
 namespace Products.Api.Authorization.Attributes
@@ -10,22 +11,50 @@ namespace Products.Api.Authorization.Attributes
     // and the user-supplied age parameter. A custom authorization policy provider
     // (`MinimumAgePolicyProvider`) can then produce an authorization policy with 
     // the necessary requirements based on this policy name.
-    internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
-    {
-        public MinimumAgeAuthorizeAttribute(int age) => Age = age;
+    //[AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false)]
+    //internal class MinimumAgeAuthorizeAttribute : AuthorizeAttribute
+    //{
+    //    public MinimumAgeAuthorizeAttribute(int age) => Age = age;
 
-        // Get or set the Age property by manipulating the underlying Policy property
-        public int Age
+    //    // Get or set the Permission property by manipulating the underlying Policy property
+    //    public int Age
+    //    {
+    //        get
+    //        {
+    //            if (int.TryParse(Policy.Substring(MinimumAgePolicyProvider.PolicyPrefix.Length), out var age))
+    //            {
+    //                return age;
+    //            }
+    //            return default(int);
+    //        }
+    //        set => Policy = $"{MinimumAgePolicyProvider.PolicyPrefix}{value.ToString()}";
+    //    }
+    //}
+
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = false)]
+    internal class HasPermissionAttribute : AuthorizeAttribute
+    {
+        public HasPermissionAttribute(Permission permission) => Permission = permission;
+
+        // Get or set the Permission property by manipulating the underlying Policy property
+        public Permission Permission
         {
             get
             {
-                if (int.TryParse(Policy.Substring(MinimumAgePolicyProvider.PolicyPrefix.Length), out var age))
+                if (Enum.TryParse<Permission>(Policy.Substring(PermissionsPolicyProvider.PolicyPrefix.Length), out var permission))
                 {
-                    return age;
+                    return permission;
                 }
-                return default(int);
+                return Permission.None;
             }
-            set => Policy = $"{MinimumAgePolicyProvider.PolicyPrefix}{value.ToString()}";
+            set => Policy = $"{PermissionsPolicyProvider.PolicyPrefix}{value.ToString()}";
         }
+    }
+
+    public enum Permission
+    {
+        None = 0,
+        Read,
+        Write
     }
 }
