@@ -24,7 +24,7 @@ namespace Products.Api.IntegrationTests.Specs
         {
             var builder = _fixture.Server.CreateHttpApiRequest<S01IntroController>(
                 controller => controller.Values());
-            
+
             var response = await builder
                 .WithIdentity(Identities.HugoBiarge)
                 .GetAsync();
@@ -47,7 +47,7 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task PublicValues_Is_Authorized_Without_User_Information()
         {
-            var builder =_fixture.Server.CreateHttpApiRequest<S01IntroController>(
+            var builder = _fixture.Server.CreateHttpApiRequest<S01IntroController>(
                 controller => controller.PublicValues());
 
             var response = await builder

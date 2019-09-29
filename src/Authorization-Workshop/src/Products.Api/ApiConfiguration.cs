@@ -35,11 +35,14 @@ namespace Products.Api
             services.AddSingleton<IAuthorizationPolicyProvider, PermissionsPolicyProvider>();
 
             // Authorization handlers
+            services.AddSingleton<IAuthorizationHandler, Handler01>();
+            services.AddSingleton<IAuthorizationHandler, Handler02>();
+            services.AddSingleton<IAuthorizationHandler, Handler03>();
             services.AddSingleton<IAuthorizationHandler, MinimumAgeAuthorizationHandler>();
-            services.AddSingleton<IAuthorizationHandler, PermissionsAuthorizationHandler>();
             services.AddSingleton<IAuthorizationHandler, HasBadgeHandler>();
             services.AddSingleton<IAuthorizationHandler, HasTemporaryPassHandler>();
             services.AddSingleton<IAuthorizationHandler, OwnedProductHandler>();
+            services.AddSingleton<IAuthorizationHandler, PermissionsAuthorizationHandler>();
         }
 
         public static void Configure(IApplicationBuilder app)

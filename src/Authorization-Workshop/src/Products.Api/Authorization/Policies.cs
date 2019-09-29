@@ -10,12 +10,15 @@ namespace Products.Api.Authorization
     {
         public const string Default = "Default";
         public const string Simple = "Simple";
+        public const string HandlersBehavior = "HandlersBehavior";
         public const string Over21Years = "Over21Years";
         public const string AllowedInOffice = "AllowedInOffice";
         public const string MultipleSchemas = "MultipleSchemas";
 
         public static void Configure(AuthorizationOptions options)
         {
+            options.InvokeHandlersAfterFailure = true;
+
             // This is the default policy (created and used by default)
             // Can be replaced
             // options.DefaultPolicy = new AuthorizationPolicyBuilder().RequireRole("Admin").Build();
@@ -40,25 +43,31 @@ namespace Products.Api.Authorization
                 });
             });
 
-            // Code based policy: Calculations over Claims information
-            options.AddPolicy(Over21Years, builder =>
+            // Policy with simple rules. Show how several succeed are handled
+            options.AddPolicy(HandlersBehavior, policyBuilder =>
             {
-                builder.AddRequirements(new MinimumAgeRequirement(21));
+                policyBuilder.AddRequirements(new LastHandlerWinRequirement());
+            });
+
+            // Code based policy: Calculations over Claims information
+            options.AddPolicy(Over21Years, policyBuilder =>
+            {
+                policyBuilder.AddRequirements(new MinimumAgeRequirement(21));
             });
 
             // Code based policy: Several handlers to validate a requirement
-            options.AddPolicy(AllowedInOffice, builder =>
+            options.AddPolicy(AllowedInOffice, policyBuilder =>
             {
-                builder.AddRequirements(new OfficeEntryRequirement(department: "CPM"));
+                policyBuilder.AddRequirements(new OfficeEntryRequirement(department: "CPM"));
             });
 
             // Use of different schemas
-            options.AddPolicy(MultipleSchemas, builder =>
+            options.AddPolicy(MultipleSchemas, policyBuilder =>
             {
-                builder.AddAuthenticationSchemes("bearer", "extra");
-                builder.RequireAuthenticatedUser();
-                builder.RequireRole("Operator"); // From bearer scheme
-                builder.RequireClaim("Supervisor"); // From extra scheme
+                policyBuilder.AddAuthenticationSchemes("bearer", "extra");
+                policyBuilder.RequireAuthenticatedUser();
+                policyBuilder.RequireRole("Operator"); // From bearer scheme
+                policyBuilder.RequireClaim("Supervisor"); // From extra scheme
             });
         }
     }
