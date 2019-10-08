@@ -29,7 +29,10 @@ namespace Products.Api.Host
                     options.Authority = "https://localhost:8000";
                 });
 
-            ApiConfiguration.ConfigureServices(services);
+            var mvcBuilder = services.AddControllers()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+            
+            ApiConfiguration.ConfigureServices(mvcBuilder);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +43,15 @@ namespace Products.Api.Host
                 app.UseDeveloperExceptionPage();
             }
 
-            ApiConfiguration.Configure(app);
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

@@ -1,6 +1,7 @@
 using Acheve.AspNetCore.TestHost.Security;
 using Acheve.TestHost;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Products.Api.IntegrationTests
@@ -25,13 +26,24 @@ namespace Products.Api.IntegrationTests
                 })
                 .AddTestServer("extra");
 
-            ApiConfiguration.ConfigureServices(services);
+            var mvcBuilder = services.AddControllers()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+            ApiConfiguration.ConfigureServices(mvcBuilder);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app)
         {
-            ApiConfiguration.Configure(app);
+            app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
         }
     }
 }

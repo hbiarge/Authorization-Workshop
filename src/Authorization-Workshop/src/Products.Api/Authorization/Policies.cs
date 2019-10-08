@@ -69,6 +69,24 @@ namespace Products.Api.Authorization
                 policyBuilder.RequireRole("Operator"); // From bearer scheme
                 policyBuilder.RequireClaim("Supervisor"); // From extra scheme
             });
+
+            // Creates a policy that uses several authentication schemes by default
+            // without explicit configuration in builder.AuthenticationSchemes
+            var customBuilder = new AuthorizationPolicyBuilder("scheme1", "scheme2");
+            customBuilder.RequireAuthenticatedUser();
+            var policy = customBuilder.Build();
+
+            options.AddPolicy("MultipleSchemesBis", policy);
+            
+            // Or Register it as a default policy
+            // options.DefaultPolicy = policy;
+
+            //// Sample for combined policies
+            options.AddPolicy("Combined", policyBuilder =>
+            {
+                policyBuilder.Combine(options.GetPolicy(Simple));
+                policyBuilder.Combine(options.GetPolicy(Over21Years));
+            });
         }
     }
 }
