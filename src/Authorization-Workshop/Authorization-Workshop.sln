@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29306.81
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D3A1C1B4-0D86-4F8B-88E7-A87E8DD5CD9D}"
 EndProject
@@ -15,10 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{84C7483E-D
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Products.Api.IntegrationTests", "test\Products.Api.IntegrationTests\Products.Api.IntegrationTests.csproj", "{3205B28E-9C82-4EDE-8BD6-3E1E1BD39604}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WebApi", "WebApi", "{DD3A25CB-D40F-4861-ADAF-9F25C5B70887}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApiSample", "src\WebApiSample\WebApiSample.csproj", "{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -38,10 +34,6 @@ Global
 		{3205B28E-9C82-4EDE-8BD6-3E1E1BD39604}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3205B28E-9C82-4EDE-8BD6-3E1E1BD39604}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3205B28E-9C82-4EDE-8BD6-3E1E1BD39604}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -50,8 +42,6 @@ Global
 		{8D6E9A25-ED3F-4C8B-B9FD-4A4B5F3650D4} = {D3A1C1B4-0D86-4F8B-88E7-A87E8DD5CD9D}
 		{31483347-92A8-459C-9C56-0296A50112D3} = {D3A1C1B4-0D86-4F8B-88E7-A87E8DD5CD9D}
 		{3205B28E-9C82-4EDE-8BD6-3E1E1BD39604} = {84C7483E-D227-4E8E-B2D5-7728C96D048E}
-		{DD3A25CB-D40F-4861-ADAF-9F25C5B70887} = {D3A1C1B4-0D86-4F8B-88E7-A87E8DD5CD9D}
-		{A4B32DD7-ABD2-4F5A-B6D4-FA422B5F2083} = {DD3A25CB-D40F-4861-ADAF-9F25C5B70887}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {AE9F51E4-E6F5-499A-ABDA-BD0C347163C1}
