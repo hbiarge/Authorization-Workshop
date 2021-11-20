@@ -6,7 +6,7 @@ namespace Products.Api.IntegrationTests
 {
     public static class Identities
     {
-        public static readonly IEnumerable<Claim> HugoBiarge = new[]
+        public static readonly IEnumerable<Claim> Hugo = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, "HB04356"),
             new Claim(ClaimTypes.Name, "Hugo Biarge"),
@@ -19,7 +19,7 @@ namespace Products.Api.IntegrationTests
             new Claim("BadgeNumber", "HB04356", ClaimValueTypes.String, "MySuperSecureIssuer"),
         };
 
-        public static readonly IEnumerable<Claim> RubenGarcia = new[]
+        public static readonly IEnumerable<Claim> Ruben = new[]
         {
             new Claim(ClaimTypes.NameIdentifier, "RG95478"),
             new Claim(ClaimTypes.Name, "Ruben Garcia"),

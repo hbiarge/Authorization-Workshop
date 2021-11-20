@@ -1,49 +1,43 @@
 using Acheve.AspNetCore.TestHost.Security;
 using Acheve.TestHost;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Products.Api.IntegrationTests
+namespace Products.Api.IntegrationTests;
+
+public class TestStartup
 {
-    public class TestStartup
+    public void ConfigureServices(IServiceCollection services)
     {
-        // This method gets called by the runtime. Use this method to add services to the container.
-        // For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=398940
-        public void ConfigureServices(IServiceCollection services)
-        {
-            // Register Authentication
-            services.AddAuthentication(options =>
-                {
-                    options.DefaultScheme = TestServerDefaults.AuthenticationScheme;
-                })
-                .AddTestServer()
-                // We can register as many TestServer authentication options with different scheme names
-                .AddTestServer("bearer", options =>
-                {
-                    options.NameClaimType = "name";
-                    options.RoleClaimType = "role";
-                })
-                .AddTestServer("extra");
-
-            var mvcBuilder = services.AddControllers()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
-            ApiConfiguration.ConfigureServices(mvcBuilder);
-        }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseRouting();
-
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+        // Register Authentication
+        services.AddAuthentication(options =>
             {
-                endpoints.MapControllers();
-            });
-        }
+                options.DefaultScheme = TestServerDefaults.AuthenticationScheme;
+            })
+            .AddTestServer()
+            // We can register as many TestServer authentication handlers with different scheme names
+            .AddTestServer("bearer", options =>
+            {
+                options.NameClaimType = "name";
+                options.RoleClaimType = "role";
+            })
+            .AddTestServer("extra");
+
+        var mvcBuilder = services.AddControllers();
+
+        ApiConfiguration.ConfigureServices(mvcBuilder);
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
     }
 }

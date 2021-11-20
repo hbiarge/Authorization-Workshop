@@ -3,18 +3,18 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Microsoft.AspNetCore.TestHost;
-using Products.Api.Controllers;
 using Products.Api.IntegrationTests.Infrastructure;
+using Products.Api.Scenarios.S07CustomPolicyProvider;
 using Xunit;
 
 namespace Products.Api.IntegrationTests.Specs
 {
     [Collection(Collections.Api)]
-    public class S04CustomPolicyProviderControllerTests
+    public class S07CustomPolicyProviderTests
     {
         private readonly TestHostFixture _fixture;
 
-        public S04CustomPolicyProviderControllerTests(TestHostFixture fixture)
+        public S07CustomPolicyProviderTests(TestHostFixture fixture)
         {
             _fixture = fixture;
         }
@@ -22,11 +22,11 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task Should_Be_Forbidden_For_Write()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<S04CustomPolicyProviderController>(
+            var builder = _fixture.Server.CreateHttpApiRequest<Controller>(
                 controller => controller.Write());
 
             var response = await builder
-                .WithIdentity(Identities.HugoBiarge)
+                .WithIdentity(Identities.Hugo)
                 .GetAsync();
 
             response.StatusCode.Should().Be(HttpStatusCode.Forbidden);
@@ -35,11 +35,11 @@ namespace Products.Api.IntegrationTests.Specs
         [Fact]
         public async Task Should_Be_Success_For_Read()
         {
-            var builder = _fixture.Server.CreateHttpApiRequest<S04CustomPolicyProviderController>(
+            var builder = _fixture.Server.CreateHttpApiRequest<Controller>(
                 controller => controller.Read());
 
             var response = await builder
-                .WithIdentity(Identities.HugoBiarge)
+                .WithIdentity(Identities.Hugo)
                 .GetAsync();
 
             await response.IsSuccessStatusCodeOrThrow();
